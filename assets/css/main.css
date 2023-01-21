@@ -1,0 +1,28 @@
+:root {
+  --color-primary: #f9f6d8;
+  --color-secondary: #292827;
+  --color-tertiary: #ed5221;
+  --color-lightest: #fff;
+  --color-darkest: #000;
+  --color-dark: #363636;
+  --color-less-dark: #777;
+  --color-gray: #dee2e6;
+  --color-blue: #007bff;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.article-content a:hover {
+  color: var(--color-tertiary);
+  text-decoration: underline;
+}
+
+.hero-body {
+  height: 100%;
+  width: 100vw;
+}

@@ -1,0 +1,51 @@
+{{ define "content" }}
+<section class="hero is-medium">
+  <div class="hero-body is-flex-direction-column" style="background-image: url({{ .Params.featured_image }}); background-size: cover;">
+  </div>
+</section>
+<article class="article">
+  <div class="article-header">
+    <h1>{{ .Title | title }}</h1>
+    <p class="date">{{ .Params.date.Format "02 Jan 2006" }}</p>
+    {{ range .Params.authors }}
+      {{ $author := . }}
+      {{ with $.Site.GetPage (printf "/%s/%s" "authors" $author) }}
+        <h2 class="author"><a href="{{ .RelPermalink }}" class="author-link">{{ $author | humanize | title }}</a></h2>
+      {{ end }}
+    {{ end }}
+  </div>
+  <div class="article-content">
+    {{ .Content }}
+  </div>
+  <div class="article-footer">
+    <p>
+      {{ with .Params.categories }}
+      <strong>{{ if gt (len .) 1 }}Categories: {{ else }}Category: {{ end }}</strong>
+        {{ range . }}
+          {{ $cat := . }}
+          {{ with $.Site.GetPage (printf "/%s/%s" "categories" $cat) }}
+            <span class="article-footer-cat"><a href="{{ .RelPermalink }}" class="article-cat-link">{{ $cat | title }}</a></span>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </p>
+    <p>
+      {{ with .Params.tags }}
+      <strong>Tag{{ if gt (len .) 1 }}s{{ end }}: </strong>
+        {{ range . }}
+          {{ $tag := . }}
+          {{ with $.Site.GetPage (printf "/%s/%s" "tags" $tag) }}
+            <span class="article-footer-tag"><a href="{{ .RelPermalink }}" class="article-tag-link">{{ $tag | title }}</a></span>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </p>
+  </div>
+  <div class="nextprev-container">
+    {{ partial "nextprev" . }}
+  </div>
+  <div class="related-articles">
+    {{ partial "related" . }}
+  </div>
+</article>
+{{ end }}

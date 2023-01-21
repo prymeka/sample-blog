@@ -1,0 +1,37 @@
+.footer {
+  background-color: var(--color-dark);
+  color: var(--color-lightest);
+}
+
+.footer-tabs {
+  width: 60%;
+  margin-top: auto;
+}
+
+.footer-item {
+  color: var(--color-lightest);
+  font-size: 1.2rem;
+}
+
+.footer-item:hover {
+  color: var(--color-lightest);
+  text-decoration: underline;
+}
+
+.socials,
+.copyright {
+  padding-top: 3rem;
+}
+
+.socials p {
+  padding: 0;
+  margin-bottom: 0 !important;
+  margin-right: 1rem;
+}
+
+.twitter-logo,
+.socials a {
+  width: 2rem;
+  height: 2rem;
+}
+

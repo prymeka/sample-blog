@@ -1,0 +1,50 @@
+.article {
+  text-align: center;
+  width: 70%;
+}
+
+.article-header,
+.article-content {
+  margin: 2rem 0;
+}
+
+.article-header * {
+  padding: 0.5rem 0;
+}
+
+.article h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.author {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.author a:hover {
+  color: var(--color-tertiary);
+  text-decoration: underline;
+}
+
+.date {
+  color: var(--color-less-dark);
+  font-style: italic;
+}
+
+.article-content p {
+  margin: 1.7rem 0;
+  line-height: 1.7;
+}
+
+.article-footer-tag .tag-link,
+.article-footer-cat .cat-link {
+  background-color: var(--color-primary);
+}
+
+.article-footer-tag .article-tag-link:hover,
+.article-footer-cat .article-cat-link:hover {
+  color: var(--color-tertiary);
+  text-decoration: underline;
+}
+

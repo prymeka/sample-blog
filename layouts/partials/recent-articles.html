@@ -1,0 +1,8 @@
+<hr />
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "articles") }}
+{{ range $paginator.Pages }}
+{{ partial "article-preview" . }}
+<hr />
+{{ end }}
+{{ partial "pagination" . }}
+

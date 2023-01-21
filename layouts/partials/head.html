@@ -1,0 +1,21 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}" />
+  {{ if isset .Params "keywords" }}
+  <meta name="keywords" content="{{ with .Params.keywords }}{{ delimit . ", " }}{{ end }}">
+  {{ end -}}
+  <link href="{{ "favicon.png" | relURL }}" rel="icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  {{ $style := resources.Get "css/main.css" }}
+  {{ $components := readDir "assets/css/components" }}
+  {{ range $components }}
+    {{ $component := resources.Get (printf "css/components/%s" .Name) }}
+    {{ $style = slice $style $component | resources.Concat .Name }} 
+  {{ end }}
+  {{ $style  = slice $style | resources.Concat "all.css" | minify | fingerprint }} 
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  <title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{.Site.Title }}</title>
+</head>

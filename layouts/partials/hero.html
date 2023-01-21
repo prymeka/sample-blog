@@ -1,0 +1,13 @@
+{{ range first 5 (where .Site.RegularPages "Section" "articles") }}
+  {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+  <a href="{{ .RelPermalink }}" class="carousel-item" style="background-image: url({{ $featured_image }}); background-size: cover;">
+    <div class="carousel-item-title-container is-flex is-flex-direction-column is-align-items-start is-justify-content-end">
+      <p class="carousel-item-title">
+        {{ .Title }}
+      </p>
+      <p class="carousel-item-date">
+        {{ .Date.Format "02 Jan 2006" }}
+      </p>
+    </div>
+  </a>
+{{ end }}

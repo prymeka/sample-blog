@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="content has-text-centered is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+    <div class="footer-tabs is-flex is-align-items-center is-justify-content-space-around">
+      <a href="/" class="footer-item">Home</a>
+      <span>|</span>
+      <a href="/articles/" class="footer-item">Articles</a>
+      {{ range where .Site.RegularPages "Section" "meta" }}
+        <span>|</span>
+        <a href="{{ .Permalink }}" class="footer-item">{{ .Title }}</a>
+      {{ end }}
+    </div>
+    <div class="socials is-flex is-align-items-center is-justify-content-center">
+      {{ $icon := "socials/twitter-blue.png" | absURL }}
+      <p>Find us also on: </p> 
+      <a href="#">
+        <img src="{{ $icon }}" alt="Twitter Logo" title="Twitter" class="twitter-logo">
+      </a>
+    </div>
+    <div class="copyright">
+      <p>&#169; All rights reserved.</p>
+    </div>
+  </div>
+</footer>

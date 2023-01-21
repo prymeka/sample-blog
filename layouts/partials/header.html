@@ -1,0 +1,12 @@
+<nav class="navbar is-fixed-top is-shadowless is-dark">
+  <div class="container">
+    <a href="/" class="navbar-item logo">Blog Brand</a>
+    <div class="navbar-menu navbar-end">
+      <a href="/" class="navbar-item">Home</a>
+      <a href="/articles/" class="navbar-item">Articles</a>
+      {{ range where .Site.RegularPages "Section" "meta" }}
+        <a href="{{ .Permalink }}" class="navbar-item">{{ .Title }}</a>
+      {{ end }}
+    </div>
+  </div>
+</nav>

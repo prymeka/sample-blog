@@ -1,0 +1,9 @@
+{{ $linkToCover := "" }}
+{{ with .Params.featured_image }}
+  {{ $linkToCover = trim . "/" | absURL }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $linkToCover = .RelPermalink }}
+  {{ end }}
+{{ end }}
+
+{{ return $linkToCover }}

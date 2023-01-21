@@ -1,0 +1,25 @@
+{{ define "content" }}
+  <section class="hero list-hero is-small">
+    <div class="hero-body is-flex-direction-column">
+      <p class="title">
+      {{ if eq "authors" .Section }}
+        Articles by {{ .Title | humanize | title }}
+      {{ else }}
+        {{ .Title | title }} Articles
+      {{ end }}
+      </p>
+    </div>
+  </section>
+  <section class="recent-articles-container">
+    <ul class="recent-articles">
+    <hr />
+    {{ $paginator := .Paginate (where .RegularPages "Section" "articles") }}
+    {{ range $paginator.Pages }}
+    {{ partial "article-preview" . }}
+    <hr />
+    {{ end }}
+    {{ partial "pagination" . }}
+    </ul>
+  </section>
+{{ end }}
+

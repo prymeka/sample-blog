@@ -1,0 +1,18 @@
+{{ if or .Next .Prev }}
+<div class="nextprev is-flex is-align-items-center is-justify-content-space-around">
+  {{ with .Prev }}
+    <a href="{{ .RelPermalink }}">
+      <div class="prevart">
+        Previous: <br>{{ .Title }}
+      </div>
+    </a>
+  {{ end }}
+  {{ with .Next }}
+    <a href="{{ .RelPermalink }}">
+      <div class="nextart">
+        Next:<br>{{ .Title }}
+      </div>
+    </a>
+  {{ end }}
+</div>
+{{ end }}

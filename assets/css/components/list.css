@@ -1,0 +1,5 @@
+.list-hero {
+  background-color: var(--color-primary);
+  text-align: center;
+  padding-top: 3rem;
+}

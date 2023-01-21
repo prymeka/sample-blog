@@ -1,0 +1,49 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+<li class="item">
+  <a href="{{ .RelPermalink }}" class="thumbnail">
+    <img src="{{ $featured_image }}" alt="Featured Image for {{ .Title }}" title="{{ .Title }}">
+  </a>
+  <div class="item-text">
+    <a href="{{ .RelPermalink }}" class="item-title">{{ .Title }}</a>
+    <p class="item-date-and-author">
+      {{ $taxo := "authors" }}
+      {{ with .Param $taxo }}
+      <strong>Author{{ if gt (len .) 1 }}s{{ end }}: </strong>
+        {{ range $index, $author := . }}
+          {{ if gt $index 0 }}, {{ end }}
+          {{ with $.Site.GetPage (printf "/%s/%s" $taxo $author) }}
+            <a href="{{ .RelPermalink }}" class="item-author">{{ $author | humanize | title }}</a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      <span class="item-delim"> / </span>
+      <span class="item-date">{{ .Date.Format "02 Jan 2006" }}</span>
+    </p>
+    <p class="item-summary">
+      {{ .Summary }}...
+      {{ if .Truncated }}
+      <a href="{{ .RelPermalink }}" class="read-more">Read more...</a>
+      {{ end }}
+      <p class="item-meta">({{ .WordCount }} words; {{ .ReadingTime}} minute read)</p>
+    </p>
+  </div>
+  <div class="tags-and-cats">
+    <ul class="cats">
+      {{ $cats := .GetTerms "categories" }}
+      {{ if gt (len $cats) 0}}
+        {{ range $cats }}
+          <li class="cat-item"><a href="{{ .RelPermalink }}" class="cat-link">{{ .LinkTitle }} </a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+    <span class="tags-cats-delim">&bull;</span>
+    <ul class="tags">
+      {{ $tags := .GetTerms "tags" }}
+      {{ if gt (len $tags) 0}}
+        {{ range $tags }}
+          <li class="tag-item"><a href="{{ .RelPermalink }}" class="tag-link">{{ .LinkTitle }} </a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+</li>
