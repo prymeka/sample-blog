@@ -1,18 +1,26 @@
 {{ define "content" }}
-  <section class="hero list-hero is-small">
-    <div class="hero-body is-flex-direction-column">
-      <p class="title">
-      Articles
+  <section class="hero is-small has-text-centered mt-6">
+    <div class="hero-body">
+      <p class="title is-2">
+        {{ if eq "authors" .Section }}
+          Articles by {{ .Title | humanize | title }}
+        {{ else if eq "categories" .Section }}
+          Articles from Category {{ .Title | title }}
+        {{ else if eq "tags" .Section }}
+          Articles with Tag {{ .Title | title }}
+        {{ else }}
+          {{ .Title | title }}
+        {{ end }}
       </p>
     </div>
   </section>
-  <section class="recent-articles-container">
-    <ul class="recent-articles">
+  <section class="section has-text-centered is-flex-center-column">
+    <ul class="container is-flex-center-column">
     <hr />
     {{ $paginator := .Paginate (where .RegularPages "Section" "articles") }}
     {{ range $paginator.Pages }}
-    {{ partial "article-preview" . }}
-    <hr />
+      {{ partial "article-preview" . }}
+      <hr />
     {{ end }}
     {{ partial "pagination" . }}
     </ul>

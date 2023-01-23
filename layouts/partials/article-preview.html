@@ -1,47 +1,46 @@
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
 <li class="item">
-  <a href="{{ .RelPermalink }}" class="thumbnail">
+  <a href="{{ .RelPermalink }}" class="image is-4by3">
     <img src="{{ $featured_image }}" alt="Featured Image for {{ .Title }}" title="{{ .Title }}">
   </a>
   <div class="item-text">
-    <a href="{{ .RelPermalink }}" class="item-title">{{ .Title }}</a>
-    <p class="item-date-and-author">
-      {{ $taxo := "authors" }}
-      {{ with .Param $taxo }}
-      <strong>Author{{ if gt (len .) 1 }}s{{ end }}: </strong>
+    <a href="{{ .RelPermalink }}" class="title is-4 my-1">{{ .Title }}</a>
+    <p class="item-date-and-author my-1">
+      {{ with .Params.authors }}
+      <strong class="is-less-dark">Author{{ if gt (len .) 1 }}s{{ end }}: </strong>
         {{ range $index, $author := . }}
-          {{ if gt $index 0 }}, {{ end }}
-          {{ with $.Site.GetPage (printf "/%s/%s" $taxo $author) }}
-            <a href="{{ .RelPermalink }}" class="item-author">{{ $author | humanize | title -}}</a>
-          {{ end }}
+          {{- if gt $index 0 -}}, {{ end -}}
+          {{- with $.Site.GetPage (printf "/%s/%s" "authors" $author) -}}
+            <a href="{{ .RelPermalink }}" class="item-author">{{- $author | humanize | title -}}</a>
+          {{- end -}}
         {{ end }}
       {{ end }}
-      <span class="item-delim"> / </span>
-      <span class="item-date">{{ .Date.Format "02 Jan 2006" }}</span>
+      <span class="is-less-dark"> / </span>
+      <span class="is-less-dark">{{ .Date.Format "02 Jan 2006" }}</span>
     </p>
-    <p class="item-summary">
+    <p class="my-1">
       {{ .Summary }}...
       {{ if .Truncated }}
-      <a href="{{ .RelPermalink }}" class="read-more">Read more...</a>
+      <a href="{{ .RelPermalink }}">Read more...</a>
       {{ end }}
-      <p class="item-meta">({{ .WordCount }} words; {{ .ReadingTime}} minute read)</p>
+      <p class="is-italic is-less-dark">({{ .WordCount }} words; {{ .ReadingTime}} minute read)</p>
     </p>
   </div>
-  <div class="tags-and-cats">
+  <div class="tags-and-cats mt-2">
     <ul class="cats">
       {{ $cats := .GetTerms "categories" }}
       {{ if gt (len $cats) 0}}
         {{ range $cats }}
-          <li class="cat-item"><a href="{{ .RelPermalink }}" class="cat-link">{{ .LinkTitle }} </a></li>
+          <li class="cat-item"><a href="{{ .RelPermalink }}" class="cat-link mx-1">{{ .LinkTitle | title }} </a></li>
         {{ end }}
       {{ end }}
     </ul>
-    <span class="tags-cats-delim">&bull;</span>
+    <span class="mx-2">&bull;</span>
     <ul class="tags">
       {{ $tags := .GetTerms "tags" }}
       {{ if gt (len $tags) 0}}
         {{ range $tags }}
-          <li class="tag-item"><a href="{{ .RelPermalink }}" class="tag-link">{{ .LinkTitle }}&nbsp;</a></li>
+          <li class="tag-item"><a href="{{ .RelPermalink }}" class="tag-link mx-1">{{ .LinkTitle | title }}</a></li>
         {{ end }}
       {{ end }}
     </ul>

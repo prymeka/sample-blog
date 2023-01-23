@@ -1,22 +1,22 @@
-<footer class="footer">
-  <div class="content has-text-centered is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
-    <div class="footer-tabs is-flex is-align-items-center is-justify-content-space-around">
-      <a href="/" class="footer-item">Home</a>
-      <span>|</span>
-      <a href="/articles/" class="footer-item">Articles</a>
+<footer class="footer has-text-centered">
+  <div class="container">
+    <div class="columns is-vcentered is-mobile is-multiline is-size-5-desktop is-size-6-tablet is-size-6-mobile">
+      <a href="{{ "." | absURL }}" class="column">Home</a>
+      <span class="column">|</span>
+      <a href="{{ "./articles/" | absURL }}" class="column">Articles</a>
       {{ range where .Site.RegularPages "Section" "meta" }}
-        <span>|</span>
-        <a href="{{ .Permalink }}" class="footer-item">{{ .Title }}</a>
+        <span class="column">|</span>
+        <a href="{{ .Permalink }}" class="column">{{ .Title }}</a>
       {{ end }}
     </div>
-    <div class="socials is-flex is-align-items-center is-justify-content-center">
+    <div class="socials is-flex is-align-items-center is-justify-content-center mt-6">
       {{ $icon := "socials/twitter-blue.png" | absURL }}
-      <p>Find us also on: </p> 
-      <a href="#">
+      <p class="mr-4">Find us also on: </p> 
+      <a href="https://twitter.com/">
         <img src="{{ $icon }}" alt="Twitter Logo" title="Twitter" class="twitter-logo">
       </a>
     </div>
-    <div class="copyright">
+    <div class="copyright mt-6">
       <p>&#169; All rights reserved.</p>
     </div>
   </div>

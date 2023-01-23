@@ -1,15 +1,15 @@
 {{ if or .Next .Prev }}
-<div class="nextprev is-flex is-align-items-center is-justify-content-space-around">
+<div class="container is-flex is-align-items-center is-justify-content-space-around">
   {{ with .Prev }}
-    <a href="{{ .RelPermalink }}">
-      <div class="prevart">
+    <a href="{{ .RelPermalink }}" class="prev-art">
+      <div>
         Previous: <br>{{ .Title }}
       </div>
     </a>
   {{ end }}
   {{ with .Next }}
-    <a href="{{ .RelPermalink }}">
-      <div class="nextart">
+    <a href="{{ .RelPermalink }}" class="next-art">
+      <div>
         Next:<br>{{ .Title }}
       </div>
     </a>

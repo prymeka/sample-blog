@@ -1,0 +1,35 @@
+ul.container hr {
+  background-color: var(--color-tertiary);
+  width: 80%;
+}
+
+.item {
+  width: 100%; 
+  display: grid;
+  grid-template: 7fr 1fr / 1fr 2fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.tags-and-cats {
+  grid-column: 1 / 3;
+}
+
+.item-text,
+a.image {
+  width: 90%;
+  color: var(--color-secondary);
+}
+
+.item-text .title:hover {
+  color: var(--color-secondary);
+}
+
+.tags, 
+.tag-item, 
+.tag-link, 
+.cats, 
+.cat-item, 
+.cat-link {
+  display: inline;
+}

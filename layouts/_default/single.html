@@ -3,18 +3,24 @@
   <div class="hero-body is-flex-direction-column" style="background-image: url({{ .Params.featured_image }}); background-size: cover;">
   </div>
 </section>
-<article class="article">
-  <div class="article-header">
-    <h1>{{ .Title | title }}</h1>
-    <p class="date">{{ .Params.date.Format "02 Jan 2006" }}</p>
-    {{ range .Params.authors }}
-      {{ $author := . }}
-      {{ with $.Site.GetPage (printf "/%s/%s" "authors" $author) }}
-        <h2 class="author"><a href="{{ .RelPermalink }}" class="author-link">{{ $author | humanize | title }}</a></h2>
+<article class="section has-text-centered">
+  <div class="container">
+    <h1 class="title is-1 my-1">{{ .Title | title }}</h1>
+    <p class="is-less-dark my-1">{{ .Params.date.Format "02 Jan 2006" }}</p>
+    <div class="article-authors">
+      {{ with .Params.authors }}
+        <h2 class="subtitle has-text-weight-bold is-4">
+          {{ range $index, $author := . }}
+            {{- if gt $index 0 -}}, {{ end -}}
+            {{- with $.Site.GetPage (printf "/%s/%s" "authors" $author) -}}
+              <a href="{{ .RelPermalink }}">{{- $author | humanize | title -}}</a>
+            {{- end -}}
+          {{ end }}
+        </h2>
       {{ end }}
-    {{ end }}
+    </div>
   </div>
-  <div class="article-content">
+  <div class="container has-text-left article-content">
     {{ .Content }}
   </div>
   <div class="article-footer">
@@ -41,7 +47,7 @@
       {{ end }}
     </p>
   </div>
-  <div class="nextprev-container">
+  <div class="container my-6">
     {{ partial "nextprev" . }}
   </div>
   <div class="related-articles">

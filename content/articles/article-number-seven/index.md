@@ -5,7 +5,7 @@ featured_image: "default.jpg"
 keywords: ["seven"]
 categories: ["article"]
 tags: ["lorem", "ipsum"]
-authors: ["joe-doe"]
+authors: ["joe-doe", "john-a.-smith"]
 
 taxonomies:
   tag: "tags"

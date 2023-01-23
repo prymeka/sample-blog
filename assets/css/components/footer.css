@@ -1,32 +1,12 @@
-.footer {
+.footer,
+.footer * {
   background-color: var(--color-dark);
   color: var(--color-lightest);
 }
 
-.footer-tabs {
-  width: 60%;
-  margin-top: auto;
-}
-
-.footer-item {
+.footer a:hover {
   color: var(--color-lightest);
-  font-size: 1.2rem;
-}
-
-.footer-item:hover {
-  color: var(--color-lightest);
-  text-decoration: underline;
-}
-
-.socials,
-.copyright {
-  padding-top: 3rem;
-}
-
-.socials p {
-  padding: 0;
-  margin-bottom: 0 !important;
-  margin-right: 1rem;
+  background-color: var(--color-secondary);
 }
 
 .twitter-logo,

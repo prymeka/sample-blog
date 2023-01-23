@@ -1,12 +1,26 @@
 <nav class="navbar is-fixed-top is-shadowless is-dark">
   <div class="container">
-    <a href="{{ "/" | absURL }}" class="navbar-item logo">Blog Brand</a>
-    <div class="navbar-menu navbar-end">
-      <a href="{{ "/" | absURL }}" class="navbar-item">Home</a>
-      <a href="{{ "/articles/" | absURL }}" class="navbar-item">Articles</a>
+    <div class="navbar-brand">
+      <a href="{{ "." | absURL }}" class="navbar-item is-size-3 has-text-weight-bold">Blog Brand</a>
+      <a href="" class="navbar-burger" id="burger" style="margin-block: auto;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+    <div class="navbar-menu navbar-end" id="nav-links">
+      <a href="{{ "." | absURL }}" class="navbar-item">Home</a>
+      <a href="{{ "./articles/" | absURL }}" class="navbar-item">Articles</a>
       {{ range where .Site.RegularPages "Section" "meta" }}
         <a href="{{ .Permalink }}" class="navbar-item">{{ .Title }}</a>
       {{ end }}
     </div>
   </div>
 </nav>
+<script>
+  const burgerIcon = document.querySelector("#burger");
+  const navbarMenu = document.querySelector("#nav-links");
+  burgerIcon.addEventListener("click", () => {
+    navbarMenu.classList.toggle("is-active");
+  });
+</script>

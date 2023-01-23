@@ -17,12 +17,31 @@ body {
   color: var(--color-secondary);
 }
 
-.article-content a:hover {
+.is-flex-center-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+a:hover {
   color: var(--color-tertiary);
   text-decoration: underline;
+}
+
+.hero {
+  background-color: var(--color-primary);
 }
 
 .hero-body {
   height: 100%;
   width: 100vw;
+}
+
+.is-less-dark {
+  color: var(--color-less-dark);
+}
+
+.is-darkest {
+  color: var(--color-darkest);
 }

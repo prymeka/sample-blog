@@ -1,19 +1,21 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ if gt (len $related) 1 }}
   {{ with $related }}
-    <div class="related-container is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
-      <p class="related-header">Related Articles</p>
-      <ul class="related-list is-flex is-align-items-center is-justify-content-center">
+    <div class="container is-flex-center-column">
+      <p class="title is-3 is-darkest">Related Articles</p>
+      <ul class="related-articles is-flex is-align-items-center is-justify-content-center m-0">
         {{ range . }}
           {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
-          <li class="related-article " style="background-image: url({{ $featured_image }}); background-size: cover;">
-            <a href="{{ .RelPermalink }}" class="related-article-link is-flex is-flex-direction-column is-align-items-start is-justify-content-end">
-              <p class="related-title">{{ .Title }}</p>
-              <p class="related-date">{{ .Date.Format "02 Jan 2006" }}</p>
+          <li class="related-article" style="background-image: url({{ $featured_image }}); background-size: cover;">
+            <a href="{{ .RelPermalink }}" class="related-article-link is-flex is-flex-direction-column is-align-items-start is-justify-content-end pl-4 pb-4">
+              <p class="title is-4 is-darkest">{{ .Title }}</p>
+              <p class="subtitle is-darkest">{{ .Date.Format "02 Jan 2006" }}</p>
             </a>
           </li>
         {{ end }}
       </ul>
     </div>
   {{ end }}
+{{ else }}
+  <p>None found.</p>
 {{ end }}
