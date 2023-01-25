@@ -1,0 +1,17 @@
+.navbar-menu a.navbar-item,
+.navbar-brand a {
+  text-decoration: none;
+}
+
+#nav-links,
+#nav-links a {
+  background-color: var(--color-dark);
+  color: var(--color-lightest);
+}
+
+#burger:hover,
+#nav-links a:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-lightest);
+  text-decoration: underline;
+}

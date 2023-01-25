@@ -8,7 +8,7 @@
         <span></span>
       </a>
     </div>
-    <div class="navbar-menu navbar-end" id="nav-links">
+    <div class="navbar-menu navbar-end has-text-centered" id="nav-links">
       <a href="{{ "." | absURL }}" class="navbar-item">Home</a>
       <a href="{{ "./articles/" | absURL }}" class="navbar-item">Articles</a>
       {{ range where .Site.RegularPages "Section" "meta" }}
@@ -17,10 +17,5 @@
     </div>
   </div>
 </nav>
-<script>
-  const burgerIcon = document.querySelector("#burger");
-  const navbarMenu = document.querySelector("#nav-links");
-  burgerIcon.addEventListener("click", () => {
-    navbarMenu.classList.toggle("is-active");
-  });
-</script>
+{{ $js := resources.Get "js/burger-toggle.js" }}
+<script src="{{ $js.RelPermalink }}" defer></script>

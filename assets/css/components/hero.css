@@ -36,6 +36,10 @@
   animation: display 30s infinite;
 }
 
+.carousel-item:hover {
+  text-decoration: none;
+}
+
 .carousel-item:nth-child(2) {
   animation-delay: 6s;
 }
