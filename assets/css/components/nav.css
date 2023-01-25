@@ -13,5 +13,4 @@
 #nav-links a:hover {
   background-color: var(--color-secondary);
   color: var(--color-lightest);
-  text-decoration: underline;
 }
